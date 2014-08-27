@@ -1,0 +1,7 @@
+Step1: Compile BLAS with gfortran
+       #If you get relocation problem between 64bit and 32bit, you may be able to use make.in.blas.
+Step2: Compile CBLAS
+       #Again, if you get relocation problem between 64bit and 32bit, you may be able to use Makefile.in.cblas.
+Step3: Change the pass of cblas.h in libklr.h #line 20
+Step4: Modify the Makefile in IWKLR folder. 
+Step5: run 'make'.

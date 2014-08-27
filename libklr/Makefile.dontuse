@@ -1,0 +1,86 @@
+# source files.
+SRC =  	klr.cpp libklr.cpp tools.cpp
+
+OBJ = $(SRC:.cpp=.o)
+
+OUT = ../libklr.a
+
+# C++ compiler flags (-g -O2 -Wall)
+CCFLAGS = -O3 -fPIC -Wall
+
+# compiler
+CCC = g++
+
+# include YOU HAVE TO ADOBT THIS STUFF
+INCLUDES = -I../../CLAPACK-3.2.1/INCLUDE -I../../CLAPACK-3.2.1/BLAS/WRAP
+
+# library paths
+LIBS = -L../../CLAPACK-3.2.1/BLAS/WRAP -lcblaswr
+
+# compile flags
+LDFLAGS = -g
+
+.SUFFIXES: .cpp
+
+default: dep $(OUT)
+
+.cpp.o:
+	$(CCC) $(INCLUDES) $(CCFLAGS) $(LIBS) -c $< -o $@
+
+$(OUT): $(OBJ)
+	ar rcs $(OUT) $(OBJ)
+
+depend: dep
+
+dep:
+	makedepend -- $(CFLAGS) -- $(INCLUDES) $(SRC)
+
+clean:
+	rm -f $(OBJ) $(OUT) Makefile.bak 
+# DO NOT DELETE
+
+klr.o: stdafx.h targetver.h /usr/include/stdio.h /usr/include/features.h
+klr.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+klr.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h
+klr.o: /usr/lib64/gcc/x86_64-suse-linux/4.1.2/include/stddef.h
+klr.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+klr.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+klr.o: /usr/include/bits/wchar.h /usr/include/gconv.h
+klr.o: /usr/lib64/gcc/x86_64-suse-linux/4.1.2/include/stdarg.h
+klr.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+klr.o: /usr/include/stdlib.h /usr/include/math.h /usr/include/bits/huge_val.h
+klr.o: /usr/include/bits/mathdef.h /usr/include/bits/mathcalls.h
+klr.o: /usr/include/time.h /usr/include/bits/time.h
+klr.o: ../../CLAPACK-3.2.1/INCLUDE/f2c.h
+klr.o: ../../CLAPACK-3.2.1/INCLUDE/clapack.h
+klr.o: ../../CLAPACK-3.2.1/BLAS/WRAP/cblas.h klr.h
+libklr.o: stdafx.h targetver.h /usr/include/stdio.h /usr/include/features.h
+libklr.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+libklr.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h
+libklr.o: /usr/lib64/gcc/x86_64-suse-linux/4.1.2/include/stddef.h
+libklr.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+libklr.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+libklr.o: /usr/include/bits/wchar.h /usr/include/gconv.h
+libklr.o: /usr/lib64/gcc/x86_64-suse-linux/4.1.2/include/stdarg.h
+libklr.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+libklr.o: /usr/include/stdlib.h /usr/include/math.h
+libklr.o: /usr/include/bits/huge_val.h /usr/include/bits/mathdef.h
+libklr.o: /usr/include/bits/mathcalls.h /usr/include/time.h
+libklr.o: /usr/include/bits/time.h ../../CLAPACK-3.2.1/INCLUDE/f2c.h
+libklr.o: ../../CLAPACK-3.2.1/INCLUDE/clapack.h
+libklr.o: ../../CLAPACK-3.2.1/BLAS/WRAP/cblas.h libklr.h
+tools.o: stdafx.h targetver.h /usr/include/stdio.h /usr/include/features.h
+tools.o: /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h
+tools.o: /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h
+tools.o: /usr/lib64/gcc/x86_64-suse-linux/4.1.2/include/stddef.h
+tools.o: /usr/include/bits/types.h /usr/include/bits/typesizes.h
+tools.o: /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h
+tools.o: /usr/include/bits/wchar.h /usr/include/gconv.h
+tools.o: /usr/lib64/gcc/x86_64-suse-linux/4.1.2/include/stdarg.h
+tools.o: /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h
+tools.o: /usr/include/stdlib.h /usr/include/math.h
+tools.o: /usr/include/bits/huge_val.h /usr/include/bits/mathdef.h
+tools.o: /usr/include/bits/mathcalls.h /usr/include/time.h
+tools.o: /usr/include/bits/time.h ../../CLAPACK-3.2.1/INCLUDE/f2c.h
+tools.o: ../../CLAPACK-3.2.1/INCLUDE/clapack.h
+tools.o: ../../CLAPACK-3.2.1/BLAS/WRAP/cblas.h
